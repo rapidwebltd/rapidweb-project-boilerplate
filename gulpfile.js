@@ -58,6 +58,22 @@ gulp.task('less', function() {
             }))
             .pipe(gulp.dest(css_dir));
 });
+
+/*Compile JS*/
+gulp.task('js-build', function() {
+  return gulp.src(js_dir)
+    .pipe(uglify())
+    .pipe(cat('scripts.min.js'))
+    .pipe(gulp.dest(js_output_dir));
+});
+
+/*Compile JS UNMINIFIED!!*/
+gulp.task('js-build-dev', function() {
+  return gulp.src(js_dir)
+    .pipe(cat('scripts.min.js'))
+    .pipe(gulp.dest(js_output_dir));
+});
+
 /*Bootlint*/
 gulp.task('bootlint', function() {
 	return gulp.src(html_dir)
