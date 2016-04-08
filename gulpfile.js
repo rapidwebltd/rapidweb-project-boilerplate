@@ -7,7 +7,9 @@ var html_dir = ['./*.html', './*.php', './**/*.html', './**/*.php'],
     './js/scripts.js'],
     js_output_dir = './public/js',
     css_dir = './public/css',
-    php_dir = ['./*.php', './**/*.php'];
+    php_dir = ['./*.php', './**/*.php'],
+    img_src_dir = ['./*.+(png|jpg|gif|jpeg)', './**/*.+(png|jpg|gif|jpeg)'],
+    img_out_dir = 'public/img';
 
 /*Gulp Requires*/
 var gulp = require('gulp'),
@@ -19,7 +21,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     jshint = require('gulp-jshint'),
     cat = require('gulp-concat'),
-    cleancss = new LessPluginCleanCSS({ advanced: true, keepSpecialComments: 0 });
+    cleancss = new LessPluginCleanCSS({ advanced: true, keepSpecialComments: 0 }),
+    imageop = require('gulp-image-optimization')
 
 /*Watch Task*/
 gulp.task('watch', function() {
@@ -57,8 +60,18 @@ gulp.task('js-build-dev', function() {
 gulp.task('bootlint', function() {
 	return gulp.src(html_dir)
         .pipe(bootlint({disabledIds: ['E001', 'W001', 'W002', 'W003', 'W005']}));
-	
 });
+
+/* Image Min */
+gulp.task('images', function(cb) {
+    gulp.src(img_src_dir).pipe(imageop({
+        optimizationLevel: 8,
+        progressive: true,
+        interlaced: true
+    })).pipe(gulp.dest(img_out_dir)).on('end', cb).on('error', cb);
+});
+
+
 /*JS Lint*/
 gulp.task('jshint', function() {
   return gulp.src(js_dir)
