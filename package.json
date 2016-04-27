@@ -1,6 +1,6 @@
 {
   "name": "rapidweb-project-boilerplate",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Rapid Web's workflow for new projects.",
   "main": "gulpfile.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "gulp-imagemin": "^2.4.0",
     "gulp-jshint": "^2.0.0",
     "gulp-less": "^3.0.5",
+    "gulp-livereload": "^3.8.1",
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
     "jshint": "^2.9.1",
