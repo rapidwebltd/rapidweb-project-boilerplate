@@ -22,7 +22,9 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     cat = require('gulp-concat'),
     cleancss = new LessPluginCleanCSS({ advanced: true, keepSpecialComments: 0 }),
-    imageop = require('gulp-image-optimization')
+    imageop = require('gulp-image-optimization'),
+    livereload = require('gulp-livereload');
+    
 
 /*Watch Task*/
 gulp.task('watch', function() {
