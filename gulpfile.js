@@ -25,6 +25,11 @@ var gulp = require('gulp'),
     imageop = require('gulp-image-optimization'),
     livereload = require('gulp-livereload');
     
+/*Default Task*/
+gulp.task('default', ['less', 'js-build', 'images']);
+
+/*Run linters*/
+gulp.task('lint', ['bootlint', 'jshint']);
 
 /*Watch Task*/
 gulp.task('watch', function() {
@@ -50,8 +55,7 @@ gulp.task('less', function() {
           paths: [ path.join(__dirname, 'less', 'includes') ],
           plugins: [cleancss]
         })).pipe(livereload())
-        .pipe(gulp.dest(css_dir))
-        ;
+        .pipe(gulp.dest(css_dir));
 });
 
 /*Compile JS*/
