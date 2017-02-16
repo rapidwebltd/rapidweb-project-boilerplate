@@ -51,7 +51,9 @@ gulp.task('images', function(cb) {
 });
 
 /*Compile LESS*/
-gulp.task('less', function() {
+gulp.task('less', ['less-main']);
+
+gulp.task('less-main', function() {
     return gulp.src(less_dir)
         .pipe(less({
           paths: [ path.join(__dirname, 'less', 'includes') ],
@@ -61,7 +63,9 @@ gulp.task('less', function() {
 });
 
 /*Compile JS*/
-gulp.task('js-build', function() {
+gulp.task('js-build', ['js-build-main', 'jshint']);
+
+gulp.task('js-build-main', function() {
   return gulp.src(js_dir)
     .pipe(uglify())
     .pipe(cat('scripts.min.js'))
@@ -70,7 +74,9 @@ gulp.task('js-build', function() {
 });
 
 /*Compile JS UNMINIFIED!!*/
-gulp.task('js-build-dev', function() {
+gulp.task('js-build-dev', ['js-build-main-dev', 'jshint']);
+
+gulp.task('js-build-main-dev', function() {
   return gulp.src(js_dir)
     .pipe(cat('scripts.min.js'))
     .pipe(gulp.dest(js_output_dir))
