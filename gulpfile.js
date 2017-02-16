@@ -9,7 +9,9 @@ var html_dir = ['./*.html', './*.php', './**/*.html', './**/*.php'],
     css_dir = './public/css',
     php_dir = ['./*.php', './**/*.php'],
     img_src_dir = ['./*.+(png|jpg|gif|jpeg)', './**/*.+(png|jpg|gif|jpeg)'],
-    img_out_dir = './public/img';
+    img_out_dir = './public/img',
+    fonts_dir = ['./public/bower_components/font-awesome/fonts/*'],
+    fonts_output_dir = './public/fonts';
 
 /*Gulp Requires*/
 var gulp = require('gulp'),
@@ -87,4 +89,10 @@ gulp.task('jshint', function() {
   return gulp.src(js_dir)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
+});
+
+/*Copy FontAwesome fonts to the public directory*/
+gulp.task('fonts', function() {
+  return gulp.src(fonts_dir)
+  .pipe(gulp.dest(fonts_output_dir));
 });
