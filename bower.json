@@ -29,7 +29,7 @@
     "animate.less": "*",
     "basic-js-cookie-banner": "*",
     "direct-share-buttons": "*",
-    "rapid-style": "*",
-    "wow": "^1.1.2"
+    "wow": "^1.1.2",
+    "font-awesome": "fontawesome#^4.7.0"
   }
 }
